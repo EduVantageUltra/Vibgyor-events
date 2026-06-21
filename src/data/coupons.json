@@ -1,0 +1,4 @@
+[
+  { "code": "WELCOME10", "type": "percent", "value": 10, "minOrder": 0, "active": true },
+  { "code": "SAVE500", "type": "flat", "value": 500, "minOrder": 5000, "active": true }
+]

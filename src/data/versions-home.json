@@ -1,0 +1,761 @@
+[
+  {
+    "ts": 1782073230958,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "MultiStepForm",
+          "props": {
+            "id": "msf",
+            "title": "MSF_FORM_MARKER",
+            "button": "Send",
+            "fields": [
+              {
+                "label": "Name",
+                "key": "name",
+                "type": "text",
+                "required": true,
+                "step": 0,
+                "options": "",
+                "showIfField": "",
+                "showIfEquals": ""
+              },
+              {
+                "label": "Interest",
+                "key": "interest",
+                "type": "select",
+                "required": true,
+                "step": 1,
+                "options": "A,B",
+                "showIfField": "",
+                "showIfEquals": ""
+              }
+            ]
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782071896425,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "ABTest",
+          "props": {
+            "id": "ab1",
+            "expId": "hero-test",
+            "headingA": "AB_VARIANT_TEXT",
+            "headingB": "B text",
+            "subA": "s",
+            "subB": "s",
+            "ctaLabel": "Shop",
+            "ctaHref": "/shop"
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782070335729,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "BentoGrid",
+          "props": {
+            "id": "b1",
+            "items": [
+              {
+                "title": "BENTO_TPL_MARKER",
+                "body": "x",
+                "big": true,
+                "image": "/products/phone-ultra.jpg"
+              },
+              {
+                "title": "Audio",
+                "body": "",
+                "big": false,
+                "image": "/products/headphones-1.jpg"
+              }
+            ]
+          }
+        },
+        {
+          "type": "StatsCounter",
+          "props": {
+            "id": "s1",
+            "items": [
+              {
+                "value": 300,
+                "suffix": "+",
+                "label": "Products"
+              }
+            ]
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782069288151,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "StatsCounter",
+          "props": {
+            "id": "sc",
+            "items": [
+              {
+                "value": 500,
+                "suffix": "+",
+                "label": "STATS_MARKER"
+              }
+            ]
+          }
+        },
+        {
+          "type": "BentoGrid",
+          "props": {
+            "id": "bg",
+            "items": [
+              {
+                "title": "BENTO_MARKER",
+                "body": "x",
+                "big": true,
+                "image": "/products/phone-ultra.jpg"
+              }
+            ]
+          }
+        },
+        {
+          "type": "LogoMarquee",
+          "props": {
+            "id": "lm",
+            "text": "LOGO_MARKER, B, C"
+          }
+        },
+        {
+          "type": "ImageCompare",
+          "props": {
+            "id": "ic",
+            "before": "/products/phone-noir.jpg",
+            "after": "/products/phone-ultra.jpg",
+            "height": 420
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782069287918,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "SliderBlock",
+          "props": {
+            "id": "s",
+            "design": "rotate",
+            "slides": [
+              {
+                "mediaType": "image",
+                "src": "/products/phone-aurora.jpg",
+                "caption": "SL_rotate",
+                "link": ""
+              },
+              {
+                "mediaType": "image",
+                "src": "/products/earbuds-1.jpg",
+                "caption": "b",
+                "link": ""
+              }
+            ],
+            "autoplay": true,
+            "interval": 5,
+            "heightVh": 70,
+            "radius": 24
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782069287553,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "SliderBlock",
+          "props": {
+            "id": "s",
+            "design": "blur",
+            "slides": [
+              {
+                "mediaType": "image",
+                "src": "/products/phone-aurora.jpg",
+                "caption": "SL_blur",
+                "link": ""
+              },
+              {
+                "mediaType": "image",
+                "src": "/products/earbuds-1.jpg",
+                "caption": "b",
+                "link": ""
+              }
+            ],
+            "autoplay": true,
+            "interval": 5,
+            "heightVh": 70,
+            "radius": 24
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782069287302,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "SliderBlock",
+          "props": {
+            "id": "s",
+            "design": "reveal",
+            "slides": [
+              {
+                "mediaType": "image",
+                "src": "/products/phone-aurora.jpg",
+                "caption": "SL_reveal",
+                "link": ""
+              },
+              {
+                "mediaType": "image",
+                "src": "/products/earbuds-1.jpg",
+                "caption": "b",
+                "link": ""
+              }
+            ],
+            "autoplay": true,
+            "interval": 5,
+            "heightVh": 70,
+            "radius": 24
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782069287041,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "SliderBlock",
+          "props": {
+            "id": "s",
+            "design": "stack",
+            "slides": [
+              {
+                "mediaType": "image",
+                "src": "/products/phone-aurora.jpg",
+                "caption": "SL_stack",
+                "link": ""
+              },
+              {
+                "mediaType": "image",
+                "src": "/products/earbuds-1.jpg",
+                "caption": "b",
+                "link": ""
+              }
+            ],
+            "autoplay": true,
+            "interval": 5,
+            "heightVh": 70,
+            "radius": 24
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782069286592,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "SliderBlock",
+          "props": {
+            "id": "s",
+            "design": "vertical",
+            "slides": [
+              {
+                "mediaType": "image",
+                "src": "/products/phone-aurora.jpg",
+                "caption": "SL_vertical",
+                "link": ""
+              },
+              {
+                "mediaType": "image",
+                "src": "/products/earbuds-1.jpg",
+                "caption": "b",
+                "link": ""
+              }
+            ],
+            "autoplay": true,
+            "interval": 5,
+            "heightVh": 70,
+            "radius": 24
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782068440224,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "ParallaxImage",
+          "props": {
+            "id": "px",
+            "src": "/products/phone-ultra.jpg",
+            "caption": "PARALLAX_MARKER",
+            "strength": 90,
+            "height": 440
+          }
+        },
+        {
+          "type": "LottieBlock",
+          "props": {
+            "id": "lt",
+            "url": "",
+            "loop": true,
+            "height": 320
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782068276151,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "ThreeShape",
+          "props": {
+            "id": "t3d",
+            "shape": "torusKnot",
+            "color": "#7c5cff",
+            "metalness": 0.6,
+            "autoRotate": true,
+            "height": 360
+          }
+        },
+        {
+          "type": "WebGLBackground",
+          "props": {
+            "id": "wgl",
+            "heading": "WEBGL_3D_MARKER",
+            "subheading": "x",
+            "color": "#39e6ff",
+            "count": 600,
+            "height": 420
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782068081695,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "SliderBlock",
+          "props": {
+            "id": "sl",
+            "design": "parallax",
+            "slides": [
+              {
+                "mediaType": "image",
+                "src": "/products/phone-aurora.jpg",
+                "caption": "SLIDER_parallax",
+                "link": ""
+              },
+              {
+                "mediaType": "image",
+                "src": "/products/earbuds-1.jpg",
+                "caption": "b",
+                "link": ""
+              }
+            ],
+            "autoplay": true,
+            "interval": 5,
+            "heightVh": 70,
+            "radius": 24
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782068081357,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "SliderBlock",
+          "props": {
+            "id": "sl",
+            "design": "kenburns",
+            "slides": [
+              {
+                "mediaType": "image",
+                "src": "/products/phone-aurora.jpg",
+                "caption": "SLIDER_kenburns",
+                "link": ""
+              },
+              {
+                "mediaType": "image",
+                "src": "/products/earbuds-1.jpg",
+                "caption": "b",
+                "link": ""
+              }
+            ],
+            "autoplay": true,
+            "interval": 5,
+            "heightVh": 70,
+            "radius": 24
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782068081075,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "SliderBlock",
+          "props": {
+            "id": "sl",
+            "design": "flip",
+            "slides": [
+              {
+                "mediaType": "image",
+                "src": "/products/phone-aurora.jpg",
+                "caption": "SLIDER_flip",
+                "link": ""
+              },
+              {
+                "mediaType": "image",
+                "src": "/products/earbuds-1.jpg",
+                "caption": "b",
+                "link": ""
+              }
+            ],
+            "autoplay": true,
+            "interval": 5,
+            "heightVh": 70,
+            "radius": 24
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782068080798,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "SliderBlock",
+          "props": {
+            "id": "sl",
+            "design": "zoom",
+            "slides": [
+              {
+                "mediaType": "image",
+                "src": "/products/phone-aurora.jpg",
+                "caption": "SLIDER_zoom",
+                "link": ""
+              },
+              {
+                "mediaType": "image",
+                "src": "/products/earbuds-1.jpg",
+                "caption": "b",
+                "link": ""
+              }
+            ],
+            "autoplay": true,
+            "interval": 5,
+            "heightVh": 70,
+            "radius": 24
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782068080502,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "SliderBlock",
+          "props": {
+            "id": "sl",
+            "design": "slide",
+            "slides": [
+              {
+                "mediaType": "image",
+                "src": "/products/phone-aurora.jpg",
+                "caption": "SLIDER_slide",
+                "link": ""
+              },
+              {
+                "mediaType": "image",
+                "src": "/products/earbuds-1.jpg",
+                "caption": "b",
+                "link": ""
+              }
+            ],
+            "autoplay": true,
+            "interval": 5,
+            "heightVh": 70,
+            "radius": 24
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782068080023,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "SliderBlock",
+          "props": {
+            "id": "sl",
+            "design": "fade",
+            "slides": [
+              {
+                "mediaType": "image",
+                "src": "/products/phone-aurora.jpg",
+                "caption": "SLIDER_fade",
+                "link": ""
+              },
+              {
+                "mediaType": "image",
+                "src": "/products/earbuds-1.jpg",
+                "caption": "b",
+                "link": ""
+              }
+            ],
+            "autoplay": true,
+            "interval": 5,
+            "heightVh": 70,
+            "radius": 24
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782067993454,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "Hero",
+          "props": {
+            "id": "th",
+            "eyebrow": "New",
+            "title": "Beautifully simple",
+            "subtitle": "x",
+            "ctaLabel": "Shop",
+            "ctaHref": "/shop",
+            "media": "/products/phone-noir.jpg",
+            "mediaType": "image",
+            "heightVh": 80,
+            "align": "left"
+          }
+        },
+        {
+          "type": "Section",
+          "props": {
+            "id": "ts",
+            "maxWidth": "wide",
+            "maxWidthPx": 0,
+            "padY": 72,
+            "minHeightVh": 0,
+            "bg": "none",
+            "textColor": "none",
+            "content": [
+              {
+                "type": "ProductGrid",
+                "props": {
+                  "id": "tpg",
+                  "title": "Handpicked",
+                  "category": "All",
+                  "onlyFeatured": true,
+                  "count": 4
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782066765240,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "Heading",
+          "props": {
+            "id": "crash",
+            "text": "__CRASH_TEST__",
+            "size": "lg",
+            "align": "left",
+            "gradient": false,
+            "color": "none",
+            "animPreset": "none",
+            "animTrigger": "scroll",
+            "animDuration": 0.8,
+            "animDelay": 0
+          }
+        },
+        {
+          "type": "Heading",
+          "props": {
+            "id": "ok",
+            "text": "SAFE_HEADING_OK",
+            "size": "lg",
+            "align": "left",
+            "gradient": false,
+            "color": "none",
+            "animPreset": "none",
+            "animTrigger": "scroll",
+            "animDuration": 0.8,
+            "animDelay": 0
+          }
+        }
+      ],
+      "zones": {}
+    }
+  },
+  {
+    "ts": 1782065925841,
+    "type": "blocks",
+    "data": {
+      "root": {
+        "props": {}
+      },
+      "content": [
+        {
+          "type": "ImageBlock",
+          "props": {
+            "id": "i2",
+            "src": "/products/phone-ultra.jpg",
+            "alt": "x",
+            "radius": 24,
+            "aspect": "16/9",
+            "widthPct": 45,
+            "animPreset": "none",
+            "animTrigger": "scroll",
+            "animDuration": 0.8,
+            "animDelay": 0
+          }
+        }
+      ],
+      "zones": {}
+    }
+  }
+]

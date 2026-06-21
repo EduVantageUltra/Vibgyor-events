@@ -1,0 +1,20 @@
+{
+  "gaId": "",
+  "metaPixel": "",
+  "popup": {
+    "enabled": false,
+    "heading": "Plan your dream wedding",
+    "body": "Tell us your date and we will craft the rest.",
+    "ctaLabel": "Enquire now",
+    "ctaHref": "/contact",
+    "delaySec": 5
+  },
+  "intro": {
+    "enabled": false,
+    "style": "curtain",
+    "brandText": "Vibgyor",
+    "color1": "#8b5cf6",
+    "color2": "#e11d48",
+    "everyVisit": false
+  }
+}
