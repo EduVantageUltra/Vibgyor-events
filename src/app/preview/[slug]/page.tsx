@@ -1,10 +1,12 @@
 import type { Data } from "@measured/puck";
 import fs from "node:fs";
 import path from "node:path";
+import { notFound } from "next/navigation";
 import { PuckRender } from "@/components/puck/PuckRender";
 import "../../globals.css";
 
 export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 export const metadata = { title: "Draft preview", robots: { index: false, follow: false } };
 
 function readDraft(slug: string): Data {
@@ -17,6 +19,8 @@ function readDraft(slug: string): Data {
 }
 
 export default async function PreviewPage({ params }: { params: Promise<{ slug: string }> }) {
+  // LOCAL-ONLY: draft preview never opens on a deployed build.
+  if (process.env.NODE_ENV === "production") notFound();
   const { slug } = await params;
   const data = readDraft(slug);
   const has = Array.isArray(data.content) && data.content.length > 0;
