@@ -8,6 +8,8 @@ const LINKS = [
   { href: "/about", label: "Studio" },
   { href: "/services", label: "Experiences" },
   { href: "/gallery", label: "Weddings" },
+  { href: "/moments", label: "Moments" },
+  { href: "/destinations", label: "Destinations" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -34,6 +36,8 @@ export default function Nav() {
         {LINKS.map((l) => (
           <Link key={l.href} href={l.href}>{l.label}</Link>
         ))}
+        {/* the nav bar's CTA pill is hidden on phones — it lives here instead */}
+        <Link href="/contact" className="m-cta">Plan Your Day</Link>
       </div>
     </>
   );

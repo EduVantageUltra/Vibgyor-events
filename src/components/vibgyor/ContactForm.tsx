@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { burstConfetti } from "./confetti";
 
-export default function ContactForm() {
+export default function ContactForm({ city }: { city?: string } = {}) {
   const [sent, setSent] = useState(false);
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ export default function ContactForm() {
       <div className="field"><label>Phone</label><input type="tel" required placeholder="+91" /></div>
       <div className="field"><label>Email</label><input type="email" required placeholder="you@email.com" /></div>
       <div className="field"><label>Wedding Date</label><input type="text" required placeholder="Approx. month / year" /></div>
-      <div className="field"><label>City / Destination</label><input type="text" placeholder="Where will the magic happen?" /></div>
+      <div className="field"><label>City / Destination</label><input type="text" defaultValue={city} placeholder="Where will the magic happen?" /></div>
       <div className="field"><label>Budget Range</label>
         <select required defaultValue="">
           <option value="" disabled>Select</option>

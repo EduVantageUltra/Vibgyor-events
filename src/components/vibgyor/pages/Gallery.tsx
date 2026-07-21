@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Pic, { BACKDROP_SIZES } from "@/components/vibgyor/Pic";
 import { EVENT_LIST } from "@/lib/gallery";
 
 const ac = (c: string) => ({ ["--accent"]: c } as React.CSSProperties);
@@ -11,8 +12,7 @@ export default function Gallery() {
     <>
       <header className="page-hero" style={ac("var(--yellow)")}>
         <div className="ph-bg">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img data-parallax src={img("photo-1665960213508-48f07086d49c", 1920)} alt="" />
+          <Pic data-parallax src={img("photo-1665960213508-48f07086d49c", 1920)} alt="" sizes={BACKDROP_SIZES} />
           <div className="ov" />
         </div>
         <div><div className="sec-tag js-hero-fade" style={{ opacity: 0 }}>Real Weddings</div><h1><span className="js-hero-line line"><span>Tap a story to</span></span><span className="js-hero-line line"><span className="grad-text">step inside.</span></span></h1></div>
@@ -24,8 +24,7 @@ export default function Gallery() {
           <div className="album-grid">
             {EVENT_LIST.map((ev, i) => (
               <Link key={ev.id} className={`album ${CLS[i] || "w1"} reveal`} href={`/event/${ev.id}`}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={ev.cover} alt={ev.title} />
+                <Pic src={ev.cover} alt={ev.title} sizes="(max-width: 880px) 50vw, 600px" />
                 <div className="badge"><span className="pulse" />View Gallery</div>
                 <div className="cap"><div className="t">{ev.title}</div><div className="s">{ev.meta.replace(/ · \d{4}$/, "")}</div></div>
                 <div className="arrow">→</div>
@@ -37,8 +36,7 @@ export default function Gallery() {
 
       <div className="cta-band" style={ac("var(--violet)")}>
         <div className="bg">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={img("photo-1745573674206-1d4805fcc427", 1920)} alt="" />
+          <Pic src={img("photo-1745573674206-1d4805fcc427", 1920)} alt="" sizes={BACKDROP_SIZES} />
         </div>
         <div className="inner"><div className="sec-tag center reveal">Let&apos;s Begin</div><h2 className="sec-title reveal">Your story <em>next?</em></h2><Link href="/contact" className="btn-pill reveal" data-hover>Plan Your Wedding <span className="dot">→</span></Link></div>
       </div>

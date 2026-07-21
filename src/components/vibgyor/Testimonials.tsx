@@ -9,7 +9,8 @@ export default function Testimonials() {
   const w = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const id = setInterval(() => setI((x) => (x + 1) % TESTIMONIALS.length), 6000);
+    // long enough to actually read the quote before it changes
+    const id = setInterval(() => setI((x) => (x + 1) % TESTIMONIALS.length), 14000);
     return () => clearInterval(id);
   }, []);
 

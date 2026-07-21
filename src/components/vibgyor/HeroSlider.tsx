@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
+import Pic, { BACKDROP_SIZES } from "./Pic";
 import { MEDIA as M } from "@/lib/media";
 
 type Slide = { img: string; pos?: string; eyebrow: string; title: string[]; grad: number; sub: string };
@@ -16,7 +17,8 @@ const SLIDES: Slide[] = [
   { img: M.couple1, pos: "center 26%", eyebrow: "Your Story", title: ["Your love story,", "told", "beautifully."], grad: 2, sub: "Tell us your date. We’ll bring the magic." },
 ];
 
-const DURATION = 5800;
+/** How long each hero slide stays. Long enough to read the headline + the line under it. */
+const DURATION = 13000;
 
 export default function HeroSlider() {
   const [i, setI] = useState(0);
@@ -29,16 +31,34 @@ export default function HeroSlider() {
 
   useEffect(() => { schedule(); return () => { if (timer.current) clearTimeout(timer.current); }; }, [i, schedule]);
 
+  // Which slide images are allowed to download: the current one + the next.
+  const [armed, setArmed] = useState<Set<number>>(() => new Set([0, 1]));
+  useEffect(() => {
+    setArmed((prev) => {
+      const next = (i + 1) % SLIDES.length;
+      if (prev.has(i) && prev.has(next)) return prev;
+      return new Set([...prev, i, next]);
+    });
+  }, [i]);
+
   const go = (n: number) => setI((n + SLIDES.length) % SLIDES.length);
   const s = SLIDES[i];
 
   return (
     <header className="hslider">
-      {/* images */}
+      {/* images — all six sit stacked in the viewport, so `loading=lazy` would not
+          defer them. Mount only what has been seen plus the next one instead. */}
       {SLIDES.map((sl, k) => (
         <div className={"hslide" + (k === i ? " on" : "")} key={k}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={sl.img} alt="Indian wedding" style={{ objectPosition: sl.pos || "center 30%" }} />
+          {armed.has(k) && (
+            <Pic
+              src={sl.img}
+              alt="Indian wedding"
+              sizes={BACKDROP_SIZES}
+              priority={k === 0}
+              style={{ objectPosition: sl.pos || "center 30%" }}
+            />
+          )}
           <div className="ov" />
         </div>
       ))}

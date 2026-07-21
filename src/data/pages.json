@@ -4,7 +4,9 @@
     { "slug": "about", "title": "Studio", "path": "/about", "system": true, "inNav": true, "order": 1, "mode": "blocks", "seo": { "title": "" } },
     { "slug": "services", "title": "Experiences", "path": "/services", "system": true, "inNav": true, "order": 2, "mode": "blocks", "seo": { "title": "" } },
     { "slug": "gallery", "title": "Weddings", "path": "/gallery", "system": true, "inNav": true, "order": 3, "mode": "blocks", "seo": { "title": "" } },
-    { "slug": "contact", "title": "Contact", "path": "/contact", "system": true, "inNav": true, "order": 4, "mode": "blocks", "seo": { "title": "" } },
+    { "slug": "moments", "title": "Moments", "path": "/moments", "system": true, "inNav": true, "order": 4, "mode": "blocks", "seo": { "title": "" } },
+    { "slug": "destinations", "title": "Destinations", "path": "/destinations", "system": true, "inNav": true, "order": 5, "mode": "blocks", "seo": { "title": "" } },
+    { "slug": "contact", "title": "Contact", "path": "/contact", "system": true, "inNav": true, "order": 6, "mode": "blocks", "seo": { "title": "" } },
     { "slug": "terms", "title": "Terms & Conditions", "path": "/terms", "system": true, "inNav": false, "order": 10 },
     { "slug": "privacy", "title": "Privacy Policy", "path": "/privacy", "system": true, "inNav": false, "order": 11 }
   ]

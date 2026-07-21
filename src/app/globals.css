@@ -262,7 +262,7 @@ nav{position:fixed;top:1.4rem;left:50%;transform:translateX(-50%) translateY(-22
 .brand .dotrow{display:inline-flex;gap:3px}
 .brand .dotrow i{width:6px;height:6px;border-radius:50%}
 .brand .dotrow i:nth-child(1){background:#8b5cf6}.brand .dotrow i:nth-child(2){background:#2563eb}.brand .dotrow i:nth-child(3){background:#16a34a}.brand .dotrow i:nth-child(4){background:#eab308}.brand .dotrow i:nth-child(5){background:#f97316}.brand .dotrow i:nth-child(6){background:#e11d48}
-.nav-links{display:flex;gap:2rem;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase}
+.nav-links{display:flex;gap:1.5rem;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
 .nav-links a{position:relative;color:var(--cream-dim);transition:color .4s}
 .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--rainbow);transition:width .4s var(--eo)}
 .nav-links a:hover,.nav-links a.active{color:var(--cream)}
@@ -305,7 +305,7 @@ section{position:relative;padding:7rem 1.5rem;max-width:1200px;margin:0 auto}
 
 /* ---- MARQUEE ---- */
 .marquee{padding:1.8rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;background:var(--bg-2)}
-.marquee-track{display:inline-flex;gap:2.6rem;font-family:var(--serif);font-size:1.6rem;font-style:italic;color:var(--cream-dim);animation:marq 120s linear infinite}
+.marquee-track{display:inline-flex;gap:2.6rem;font-family:var(--serif);font-size:1.6rem;font-style:italic;color:var(--cream-dim);animation:marq var(--marq-dur,220s) linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
 .marquee-track b{font-style:normal;font-weight:400;background:var(--rainbow);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 @keyframes marq{to{transform:translateX(-50%)}}
@@ -404,10 +404,14 @@ section{position:relative;padding:7rem 1.5rem;max-width:1200px;margin:0 auto}
 @media(max-width:768px){.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:span 1}}
 
 /* ---- LIGHTBOX ---- */
-.lb{position:fixed;inset:0;z-index:9998;background:rgba(6,5,10,.95);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
+/* No backdrop-filter here: an ancestor backdrop-filter makes hardware-composited
+   <video> render black (audio keeps playing). Solid backdrop instead. */
+.lb{position:fixed;inset:0;z-index:9998;background:rgba(6,5,10,.97);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
 .lb.open{opacity:1;pointer-events:auto}
 .lb-stage{max-width:90vw;max-height:84vh;position:relative}
 .lb-stage img,.lb-stage video{max-width:90vw;max-height:84vh;border-radius:1rem;border:1px solid var(--line)}
+.lb-stage video{display:block;width:auto;height:84vh;background:#000}
+@media(max-width:768px){.lb-stage video{height:auto;max-height:76vh}}
 .lb-close{position:absolute;top:1.6rem;right:1.8rem;z-index:2;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--cream);font-size:1.3rem}
 .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--cream);font-size:1.4rem;z-index:2}
 .lb-nav.prev{left:1.6rem}.lb-nav.next{right:1.6rem}
@@ -420,10 +424,72 @@ section{position:relative;padding:7rem 1.5rem;max-width:1200px;margin:0 auto}
 .media-masonry .tile img{transition:transform 1s var(--eo);filter:brightness(.85)}
 .media-masonry .tile:hover img{transform:scale(1.05);filter:brightness(1)}
 .media-masonry .tile.video::after{content:"";position:absolute;inset:0;background:rgba(10,8,16,.35)}
+/* Moments clips are all 9:16. Declaring the ratio reserves the tile's height
+   before the poster loads — without it every image counts as "in viewport" and
+   loading=lazy defers nothing. Renders identically, just far fewer downloads. */
+.media-masonry .tile.mo img{height:auto;aspect-ratio:9/16}
 .media-masonry .tile .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:64px;height:64px;border-radius:50%;background:var(--rainbow);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;box-shadow:0 10px 40px rgba(0,0,0,.4)}
 .media-masonry .tile .vtag{position:absolute;top:1rem;left:1rem;z-index:2;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:.35rem .7rem;border-radius:999px;background:rgba(10,8,16,.6);border:1px solid var(--line)}
 @media(max-width:880px){.media-masonry{columns:2}}
 @media(max-width:560px){.media-masonry{columns:1}}
+
+/* ---- MOMENTS (gallery page) ---- */
+.mo-filters{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.6rem}
+.mo-chip{font-family:inherit;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;padding:.62rem 1.25rem;border-radius:999px;border:1px solid var(--line);color:var(--cream-dim);background:rgba(255,255,255,.02);transition:color .4s,border-color .4s,background .4s}
+.mo-chip:hover{color:var(--cream);border-color:var(--accent)}
+.mo-chip.on{color:#fff;border-color:transparent;background:var(--rainbow);background-size:200% auto}
+.mo-count{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cream-dim);margin-top:1.5rem}
+.media-masonry .tile .mcap{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:2.4rem 1.3rem 1.1rem;background:linear-gradient(to top,rgba(10,8,16,.92),transparent);opacity:0;transform:translateY(12px);transition:.5s var(--eo)}
+.media-masonry .tile:hover .mcap{opacity:1;transform:translateY(0)}
+.mcap .t{font-family:var(--serif);font-size:1.3rem;line-height:1.2}
+.mcap .s{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);margin-top:.3rem}
+@media(max-width:768px){.media-masonry .tile .mcap{opacity:1;transform:none}}
+
+/* ---- DESTINATIONS — city picker ---- */
+.finder{border:1px solid var(--line);border-radius:1.8rem;background:rgba(255,255,255,.02);padding:2.2rem;margin-top:3rem}
+.finder-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:1.7rem}
+.finder-count{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.finder-reset{font-family:inherit;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);border:1px solid var(--line);border-radius:999px;padding:.6rem 1.2rem;background:none;transition:color .4s,border-color .4s}
+.finder-reset:hover{color:var(--cream);border-color:var(--accent)}
+@media(max-width:880px){.finder{padding:1.5rem}}
+
+/* ============================================================
+   MOBILE TUNING — everything below is inside a max-width query,
+   so the desktop layout is byte-for-byte unchanged.
+   ============================================================ */
+@media(max-width:880px){
+  /* 50vw blurred blobs are the single most expensive paint on a phone GPU.
+     Smaller radius + no float loop; the ambience still reads. */
+  .aura span{filter:blur(60px);opacity:.18;animation:none}
+  .vib-site::after{opacity:.03}
+}
+@media(max-width:600px){
+  /* The pill wrapped onto two lines and crowded the bar — it lives in the
+     burger menu instead. */
+  .nav-cta{display:none}
+  nav{padding:.6rem .7rem .6rem 1.1rem;top:1rem}
+  .brand{font-size:1.3rem}
+  .mobile-menu{gap:1.1rem}
+  .mobile-menu .m-cta{margin-top:1rem;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;
+    padding:.85rem 1.9rem;border-radius:999px;color:#fff;background:var(--rainbow);font-family:var(--sans)}
+
+  /* One full-bleed 9:16 tile per screen made the gallery endless — two up
+     is scannable and halves the scroll. */
+  .media-masonry{columns:2;column-gap:.7rem}
+  .media-masonry .tile{margin-bottom:.7rem;border-radius:.9rem}
+  .media-masonry .tile .play{width:44px;height:44px;font-size:.9rem}
+  .media-masonry .tile .vtag{font-size:.5rem;padding:.25rem .5rem;top:.5rem;left:.5rem}
+  .mcap{padding:1.6rem .7rem .6rem}
+  .mcap .t{font-size:.92rem}
+  .mcap .s{font-size:.46rem;letter-spacing:.12em}
+  .mo-chip{font-size:.58rem;padding:.5rem .9rem;letter-spacing:.14em}
+
+  section{padding:4.5rem 1.2rem}
+  .page-hero{padding:7rem 1.2rem 3rem;min-height:52vh}
+  .cta-band{padding:5rem 1.2rem}
+  .svc{height:56vh}
+  footer{padding:3rem 1.2rem 2rem;margin-top:3rem}
+}
 
 /* ---- LEGAL PAGES ---- */
 .legal{max-width:820px}
@@ -445,7 +511,14 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:4rem
 .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-top:3.5rem;padding-top:2rem;border-top:1px solid var(--line);font-size:.78rem;color:var(--cream-dim)}
 .foot-rainbow{height:4px;background:var(--rainbow);border-radius:99px;margin-bottom:3.5rem;opacity:.8}
 
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* Reduce-motion: kill animations outright. Without the iteration-count reset an
+   infinite animation (the marquee, the aura blobs) loops every .01ms — i.e. it
+   strobes instead of stopping, and no duration we set can override it. */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  /* the marquee is the page's heartbeat — never kill it, just let it crawl */
+  .marquee-track{animation:marq var(--marq-dur,220s) linear infinite!important}
+}
 
 /* ===== Next.js port helpers ===== */
 .hero-full{position:relative;min-height:100dvh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}

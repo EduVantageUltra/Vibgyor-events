@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Pic, { BACKDROP_SIZES } from "@/components/vibgyor/Pic";
 import Marquee from "@/components/vibgyor/Marquee";
 import Testimonials from "@/components/vibgyor/Testimonials";
 import Countdown from "@/components/vibgyor/Countdown";
@@ -48,8 +49,7 @@ export default function Home() {
         {/* ABOUT */}
         <section className="split" style={ac("var(--blue)")}>
           <div className="media-card reveal">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={img("photo-1745573674206-1d4805fcc427", 1200)} alt="Indian wedding mandap" />
+            <Pic src={img("photo-1745573674206-1d4805fcc427", 1200)} alt="Indian wedding mandap" sizes="(max-width: 880px) 92vw, 560px" />
           </div>
           <div>
             <div className="sec-tag reveal">The Studio</div>
@@ -69,8 +69,7 @@ export default function Home() {
           <div className="h-scroll" id="hScroll">
             {SERVICES.map((sv, i) => (
               <article className="svc" key={i}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={img(sv[3])} alt={sv[1]} />
+                <Pic src={img(sv[3])} alt={sv[1]} sizes="(max-width: 880px) 80vw, 430px" />
                 <div className="svc-body">
                   <div className="svc-no grad-text">{sv[0]}</div>
                   <h3>{sv[1]}</h3>
@@ -89,8 +88,7 @@ export default function Home() {
           <div className="album-grid">
             {ALBUMS.map((al) => (
               <Link key={al.id} className={`album ${al.cls} reveal`} href={`/event/${al.id}`}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={img(al.img, al.w)} alt={al.t} />
+                <Pic src={img(al.img, al.w)} alt={al.t} sizes="(max-width: 880px) 50vw, 600px" />
                 <div className="badge"><span className="pulse" />{al.big ? "View Gallery" : "Gallery"}</div>
                 <div className="cap"><div className="t">{al.t}</div><div className="s">{al.s}</div></div>
                 <div className="arrow">→</div>
@@ -126,8 +124,7 @@ export default function Home() {
         {/* CINEMATIC MOMENT — scroll storytelling */}
         <div className="cinematic" style={ac("var(--red)")}>
           <div className="cin-bg">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img data-parallax src={img("photo-1744891471118-f74c0453cd21", 1920)} alt="" />
+            <Pic data-parallax src={img("photo-1744891471118-f74c0453cd21", 1920)} alt="" sizes={BACKDROP_SIZES} />
             <div className="cin-ov" />
           </div>
           <div className="cin-inner">
@@ -143,8 +140,7 @@ export default function Home() {
       {/* CTA */}
       <div className="cta-band" style={ac("var(--violet)")}>
         <div className="bg">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={img("photo-1722952934708-749c22eb2e58", 1920)} alt="" />
+          <Pic src={img("photo-1722952934708-749c22eb2e58", 1920)} alt="" sizes={BACKDROP_SIZES} />
         </div>
         <div className="inner">
           <div className="sec-tag center reveal">Let&apos;s Begin</div>

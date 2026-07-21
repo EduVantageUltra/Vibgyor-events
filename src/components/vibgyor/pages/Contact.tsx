@@ -1,4 +1,5 @@
 import ContactForm from "@/components/vibgyor/ContactForm";
+import Pic, { BACKDROP_SIZES } from "@/components/vibgyor/Pic";
 
 const ac = (c: string) => ({ ["--accent"]: c } as React.CSSProperties);
 const img = (id: string, w = 1920) => `https://images.unsplash.com/${id}?q=80&w=${w}&auto=format&fit=crop`;
@@ -8,8 +9,7 @@ export default function Contact() {
     <>
       <header className="page-hero" style={ac("var(--red)")}>
         <div className="ph-bg">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img data-parallax src={img("photo-1722952934708-749c22eb2e58")} alt="" />
+          <Pic data-parallax src={img("photo-1722952934708-749c22eb2e58")} alt="" sizes={BACKDROP_SIZES} />
           <div className="ov" />
         </div>
         <div><div className="sec-tag js-hero-fade" style={{ opacity: 0 }}>Let&apos;s Begin</div><h1><span className="js-hero-line line"><span>Your forever</span></span><span className="js-hero-line line"><span className="grad-text">starts here.</span></span></h1></div>

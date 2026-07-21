@@ -1,10 +1,15 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import type { Media } from "@/lib/gallery";
 
 export default function EventGallery({ media, title }: { media: Media[]; title: string }) {
   const [open, setOpen] = useState(false);
   const [idx, setIdx] = useState(0);
+  // Portalled to <body> — an ancestor filter/transform would otherwise become the
+  // containing block and push this position:fixed overlay off-screen.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const go = useCallback((d: number) => setIdx((i) => (i + d + media.length) % media.length), [media.length]);
 
@@ -38,20 +43,23 @@ export default function EventGallery({ media, title }: { media: Media[]; title: 
         ))}
       </div>
 
-      <div className={"lb" + (open ? " open" : "")} onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }}>
-        <button className="lb-close" onClick={() => setOpen(false)} aria-label="Close">✕</button>
-        <button className="lb-nav prev" onClick={() => go(-1)} aria-label="Prev">‹</button>
-        <button className="lb-nav next" onClick={() => go(1)} aria-label="Next">›</button>
-        <div className="lb-stage">
-          {cur?.type === "video" ? (
-            <video key={cur.src} src={cur.src} poster={cur.poster} controls playsInline autoPlay />
-          ) : (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img key={cur?.src} src={cur?.src} alt={title} />
-          )}
-          <div className="lb-cap">{title}</div>
-        </div>
-      </div>
+      {mounted && createPortal(
+        <div className={"lb" + (open ? " open" : "")} onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }}>
+          <button className="lb-close" onClick={() => setOpen(false)} aria-label="Close">✕</button>
+          <button className="lb-nav prev" onClick={() => go(-1)} aria-label="Prev">‹</button>
+          <button className="lb-nav next" onClick={() => go(1)} aria-label="Next">›</button>
+          <div className="lb-stage">
+            {cur?.type === "video" ? (
+              <video key={cur.src} src={cur.src} poster={cur.poster} controls playsInline autoPlay />
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img key={cur?.src} src={cur?.src} alt={title} />
+            )}
+            <div className="lb-cap">{title}</div>
+          </div>
+        </div>,
+        document.body
+      )}
     </>
   );
 }

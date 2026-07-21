@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Pic, { BACKDROP_SIZES } from "@/components/vibgyor/Pic";
 
 const ac = (c: string) => ({ ["--accent"]: c } as React.CSSProperties);
 const img = (id: string, w = 1200) => `https://images.unsplash.com/${id}?q=80&w=${w}&auto=format&fit=crop`;
@@ -8,8 +9,7 @@ export default function About() {
     <>
       <header className="page-hero" style={ac("var(--violet)")}>
         <div className="ph-bg">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img data-parallax src={img("photo-1611106211090-8f3c79eb8552", 1920)} alt="" />
+          <Pic data-parallax src={img("photo-1611106211090-8f3c79eb8552", 1920)} alt="" sizes={BACKDROP_SIZES} />
           <div className="ov" />
         </div>
         <div>
@@ -27,8 +27,7 @@ export default function About() {
             <p className="reveal lead-p">The name says it all. <b className="grad-text">Vibgyor</b> — the seven colours of the rainbow — because no two love stories share the same palette, and every celebration deserves its own.</p>
           </div>
           <div className="media-card reveal">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={img("photo-1551854716-8b811be39e7e")} alt="Indian wedding celebration" />
+            <Pic src={img("photo-1551854716-8b811be39e7e")} alt="Indian wedding celebration" sizes="(max-width: 880px) 92vw, 560px" />
           </div>
         </section>
 
@@ -57,8 +56,7 @@ export default function About() {
 
       <div className="cta-band" style={ac("var(--orange)")}>
         <div className="bg">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={img("photo-1745573674206-1d4805fcc427", 1920)} alt="" />
+          <Pic src={img("photo-1745573674206-1d4805fcc427", 1920)} alt="" sizes={BACKDROP_SIZES} />
         </div>
         <div className="inner"><div className="sec-tag center reveal">Let&apos;s Begin</div><h2 className="sec-title reveal">Let&apos;s craft <em>yours.</em></h2><Link href="/contact" className="btn-pill reveal" data-hover>Plan Your Wedding <span className="dot">→</span></Link></div>
       </div>

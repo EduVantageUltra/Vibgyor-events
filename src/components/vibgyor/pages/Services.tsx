@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Pic, { BACKDROP_SIZES } from "@/components/vibgyor/Pic";
 
 const ac = (c: string) => ({ ["--accent"]: c } as React.CSSProperties);
 const img = (id: string, w = 900) => `https://images.unsplash.com/${id}?q=80&w=${w}&auto=format&fit=crop`;
@@ -24,8 +25,7 @@ export default function Services() {
     <>
       <header className="page-hero" style={ac("var(--green)")}>
         <div className="ph-bg">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img data-parallax src={img("photo-1681717166573-f71589207785", 1920)} alt="" />
+          <Pic data-parallax src={img("photo-1681717166573-f71589207785", 1920)} alt="" sizes={BACKDROP_SIZES} />
           <div className="ov" />
         </div>
         <div><div className="sec-tag js-hero-fade" style={{ opacity: 0 }}>The Experiences</div><h1><span className="js-hero-line line"><span>Every ritual,</span></span><span className="js-hero-line line"><span className="grad-text">reimagined.</span></span></h1></div>
@@ -38,8 +38,7 @@ export default function Services() {
         <div className="h-scroll" id="hScroll">
           {SERVICES.map((sv, i) => (
             <article className="svc" key={i}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={img(sv[3])} alt={sv[1]} />
+              <Pic src={img(sv[3])} alt={sv[1]} sizes="(max-width: 880px) 90vw, 560px" />
               <div className="svc-body"><div className="svc-no grad-text">{sv[0]}</div><h3>{sv[1]}</h3><p>{sv[2]}</p></div>
             </article>
           ))}
@@ -78,8 +77,7 @@ export default function Services() {
 
       <div className="cta-band" style={ac("var(--red)")}>
         <div className="bg">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={img("photo-1744891471118-f74c0453cd21", 1920)} alt="" />
+          <Pic src={img("photo-1744891471118-f74c0453cd21", 1920)} alt="" sizes={BACKDROP_SIZES} />
         </div>
         <div className="inner"><div className="sec-tag center reveal">Let&apos;s Begin</div><h2 className="sec-title reveal">Which chapter <em>first?</em></h2><Link href="/contact" className="btn-pill reveal" data-hover>Start Planning <span className="dot">→</span></Link></div>
       </div>
